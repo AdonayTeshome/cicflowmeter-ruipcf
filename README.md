@@ -1,6 +1,6 @@
 # Python CICFlowMeter
 
-> This project is an update of the existing CiCFlowMeter V5 ([https://gitlab.com/hieulw/cicflowmeter](https://github.com/datthinh1801/cicflowmeter)) that can run with Python 3.10 with the libraries updated and include some bug fixes.
+> This project is an update of the existing CiCFlowMeter ([https://gitlab.com/hieulw/cicflowmeter](https://github.com/datthinh1801/cicflowmeter)) that can run with Python 3.10 with the libraries updated and include some bug fixes.
 ### Installation
 
 ```sh
