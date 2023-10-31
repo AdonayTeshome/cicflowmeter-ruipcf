@@ -7,11 +7,11 @@ from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = "cicflowmeter"
-DESCRIPTION = "CICFlowMeter V3 Python Implementation"
-URL = "https://gitlab.com/hieulw/cicflowmeter"
-EMAIL = "hieulw99@gmail.com"
-AUTHOR = "Le Hieu"
-REQUIRES_PYTHON = ">=3.7.0"
+DESCRIPTION = "CICFlowMeter V5 Python Implementation"
+URL = "https://github.com/ruipcf/cicflowmeter"
+EMAIL = "ruicfernandes.business@gmail.com"
+AUTHOR = "Rui Fernandes"
+REQUIRES_PYTHON = ">=3.9.0"
 VERSION = None
 
 
@@ -78,7 +78,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],

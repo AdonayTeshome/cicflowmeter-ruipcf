@@ -1,16 +1,16 @@
 # Python CICFlowMeter
 
-> This project is cloned from [Python Wrapper CICflowmeter](https://gitlab.com/hieulw/cicflowmeter) and customized to fit my need. Therefore, it is not maintained actively. If there are any problems, please create an issue or a pull request.  
-
-
+> This project is an update of the existing CiCFlowMeter V5 ([https://gitlab.com/hieulw/cicflowmeter](https://github.com/datthinh1801/cicflowmeter)) that can run with Python 3.10 with the libraries updated and include some bug fixes.
 ### Installation
+
 ```sh
-git clone https://github.com/datthinh1801/cicflowmeter.git
+git clone https://github.com/ruipcf/cicflowmeter.git
 cd cicflowmeter
 python3 setup.py install
 ```
 
 ### Usage
+
 ```sh
 usage: cicflowmeter [-h] (-i INPUT_INTERFACE | -f INPUT_FILE) [-c] [-u URL_MODEL] output
 
@@ -32,8 +32,10 @@ cicflowmeter -f example.pcap -c flows.csv
 
 Sniff packets real-time from interface to flow csv: (**need root permission**)
 
+I advise you to run the "main.py" that is a code ready to run from console and the packets will be dumped into a file "flow.csv".
+
 ```
 cicflowmeter -i eth0 -c flows.csv
 ```
 
-- Reference: https://www.unb.ca/cic/research/applications.html#CICFlowMeter
+### Reference: https://www.unb.ca/cic/research/applications.html#CICFlowMeter

@@ -1,4 +1,4 @@
-from scapy.all import IP, TCP, UDP, ICMP
+from scapy.layers.inet import IP, TCP, UDP, ICMP
 from cicflowmeter.features.context.packet_flow_key import get_packet_flow_key
 from cicflowmeter.features.context.packet_direction import PacketDirection
 from cicflowmeter.flow import Flow

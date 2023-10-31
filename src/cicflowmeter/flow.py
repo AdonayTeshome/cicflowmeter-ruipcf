@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import Any
 
+#if you run "cicflowmeter" cmd
 from . import constants
 from .features.context import packet_flow_key
 from .features.context.packet_direction import PacketDirection
@@ -10,6 +11,21 @@ from .features.packet_count import PacketCount
 from .features.packet_length import PacketLength
 from .features.packet_time import PacketTime
 from .utils import get_statistics
+
+
+#if you run "main.py" cmd
+"""
+import constants
+from features.context import packet_flow_key
+from features.context.packet_direction import PacketDirection
+from features.flag_count import FlagCount
+from features.flow_bytes import FlowBytes
+from features.packet_count import PacketCount
+from features.packet_length import PacketLength
+from features.packet_time import PacketTime
+from utils import get_statistics
+"""
+
 
 
 class Flow:
@@ -26,10 +42,10 @@ class Flow:
         (
             self.dest_ip,
             self.src_ip,
-            self.src_port,
             self.dest_port,
-            self.src_mac,
-            self.dest_mac,
+            self.src_port,
+            #self.dest_mac,
+            #self.src_mac,
         ) = packet_flow_key.get_packet_flow_key(packet, direction)
 
         self.packets = []
@@ -95,10 +111,10 @@ class Flow:
             # Basic IP information
             "src_ip": self.src_ip,
             "dst_ip": self.dest_ip,
+            #"src_mac": self.src_mac,
+            #"dst_mac": self.dest_mac,
             "src_port": self.src_port,
             "dst_port": self.dest_port,
-            "src_mac": self.src_mac,
-            "dst_mac": self.dest_mac,
             "protocol": self.protocol,
             # Basic information from packet times
             "timestamp": packet_time.get_time_stamp(),

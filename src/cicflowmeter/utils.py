@@ -1,10 +1,10 @@
 import uuid
-from itertools import islice, zip_longest
-
 import numpy
+from itertools import islice, zip_longest
+from typing import Any, Dict, Iterable, List, Tuple, Union
 
 
-def grouper(iterable, n, max_groups=0, fillvalue=None):
+def grouper(iterable: Iterable, n: int, max_groups: int = 0, fillvalue: Any = None) -> Iterable[Tuple[Any, ...]]:
     """Collect data into fixed-length chunks or blocks"""
 
     if max_groups > 0:
@@ -14,11 +14,11 @@ def grouper(iterable, n, max_groups=0, fillvalue=None):
     return zip_longest(*args, fillvalue=fillvalue)
 
 
-def random_string():
+def random_string() -> str:
     return uuid.uuid4().hex[:6].upper().replace("0", "X").replace("O", "Y")
 
 
-def get_statistics(alist: list):
+def get_statistics(alist: List[Union[int, float]]) -> Dict[str, Union[int, float]]:
     """Get summary statistics of a list"""
     iat = dict()
 

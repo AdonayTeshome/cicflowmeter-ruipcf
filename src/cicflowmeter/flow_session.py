@@ -1,11 +1,20 @@
 import csv
 from collections import defaultdict
-
 from scapy.sessions import DefaultSession
+from typing import Any, Dict, Optional, Type
 
+#if you run "cicflowmeter" cmd
 from .features.context.packet_direction import PacketDirection
 from .features.context.packet_flow_key import get_packet_flow_key
 from .flow import Flow
+
+
+#if you run "main.py" cmd
+"""
+from features.context.packet_direction import PacketDirection
+from features.context.packet_flow_key import get_packet_flow_key
+from flow import Flow
+"""
 
 EXPIRED_UPDATE = 40
 MACHINE_LEARNING_API = "http://localhost:8000/predict"
@@ -23,8 +32,7 @@ class FlowSession(DefaultSession):
             output = open(self.output_file, "w")
             self.csv_writer = csv.writer(output)
 
-        self.packets_count = 0
-
+        self.packets_count: int = 0
         self.clumped_flows_per_label = defaultdict(list)
 
         super(FlowSession, self).__init__(*args, **kwargs)
@@ -35,7 +43,7 @@ class FlowSession(DefaultSession):
         self.garbage_collect(None)
         return super(FlowSession, self).toPacketList()
 
-    def on_packet_received(self, packet):
+    def on_packet_received(self, packet: Any) -> None:
         count = 0
         direction = PacketDirection.FORWARD
 
@@ -103,7 +111,7 @@ class FlowSession(DefaultSession):
     def garbage_collect(self, latest_time) -> None:
         # TODO: Garbage Collection / Feature Extraction should have a separate thread
         if not self.url_model:
-            print("Garbage Collection Began. Flows = {}".format(len(self.flows)))
+            print(f"Garbage Collection Began. Flows = {len(self.flows)}")
         keys = list(self.flows.keys())
         for k in keys:
             flow = self.flows.get(k)
@@ -123,10 +131,10 @@ class FlowSession(DefaultSession):
 
                 del self.flows[k]
         if not self.url_model:
-            print("Garbage Collection Finished. Flows = {}".format(len(self.flows)))
+            print(f"Garbage Collection Finished. Flows = {len(self.flows)}")
 
 
-def generate_session_class(output_mode, output_file, url_model):
+def generate_session_class(output_mode: str, output_file: str, url_model: str) -> Type[FlowSession]:
     return type(
         "NewFlowSession",
         (FlowSession,),
